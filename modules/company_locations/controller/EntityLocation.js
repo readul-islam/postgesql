@@ -1,5 +1,5 @@
 // const { entityLocatonRepository } = require('../repository');
-const { getEntityLocation, createEntityLocation, getEntityLocationById } = require('../repository/EntityLocationRepos');
+const { getEntityLocation, createEntityLocation, getEntityLocationById } = require('../repository/entityLocationRepos');
 
 
 class Location {
