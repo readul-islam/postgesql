@@ -1,5 +1,5 @@
 // const { entityLocatonRepository } = require('../repository');
-const { getEntityLocation, createEntityLocation, getEntityLocationById } = require('../repository/entityLocationRepos');
+const { getEntityLocation, createEntityLocation, getEntityLocationById, updateEntityLocation } = require('../repository/entityLocationRepos');
 
 
 class Location {
@@ -25,6 +25,15 @@ class Location {
      
       const location = await getEntityLocationById(req.query);
       return res.send(location);
+    } catch (err) {
+      return res.status(500).json({ type: err.name, message: err.message });
+    }
+  }
+  async updateEntityLocation(req, res) {
+    try {
+     
+      const updateLocation = await updateEntityLocation(req.body);
+      return res.send(updateLocation);
     } catch (err) {
       return res.status(500).json({ type: err.name, message: err.message });
     }

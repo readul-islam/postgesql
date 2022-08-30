@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.VendorEmpanelmentLocations.belongsTo(models.VendorEmpanelment, {
         foreignKey: 'vendor_empanelment_id',
+        as:'vendorEmpanelment'
       });
     }
   }

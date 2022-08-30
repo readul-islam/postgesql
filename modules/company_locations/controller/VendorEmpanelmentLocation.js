@@ -1,6 +1,7 @@
 const {
   getVendorEmpanelmentLocations,
   createVendorEmpanelmentLocations,
+  updateVendorEmpanelmentLocations,
 } = require('../repository/vendorEmpanelmentLocationRepo');
 
 class VendorEmpanelmentLocation {
@@ -18,6 +19,17 @@ class VendorEmpanelmentLocation {
   async newVendorEmpanelmentLocation(req, res) {
     try {
       const vendorEmplement_location = await createVendorEmpanelmentLocations(
+        req.body
+      );
+      return res.send(vendorEmplement_location);
+    } catch (err) {
+      return res.status(500).json({ type: err.name, message: err.message });
+    }
+  }
+
+  async updateVendorEmpanelmentLocation(req, res) {
+    try {
+      const vendorEmplement_location = await updateVendorEmpanelmentLocations(
         req.body
       );
       return res.send(vendorEmplement_location);

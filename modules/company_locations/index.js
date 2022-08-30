@@ -6,9 +6,10 @@ const vendorEmpanelmentLocationController = require('./controller/VendorEmpanelm
 const router = express.Router();
 
 const locationRoutes = express.Router();
-locationRoutes.get('/', locationController.getEntityLocations);
-locationRoutes.get('/locationById', locationController.getLocationById);
+locationRoutes.get('/list', locationController.getEntityLocations);
+locationRoutes.get('/', locationController.getLocationById);
 locationRoutes.post('/add', locationController.createEntityLocation);
+locationRoutes.patch('/update', locationController.updateEntityLocation);
 
 router.use('/location', locationRoutes);
 
@@ -16,6 +17,10 @@ const vendorEmpanelmentLocationRoutes = express.Router();
 vendorEmpanelmentLocationRoutes.post(
   '/add',
   vendorEmpanelmentLocationController.newVendorEmpanelmentLocation
+);
+vendorEmpanelmentLocationRoutes.patch(
+  '/update',
+  vendorEmpanelmentLocationController.updateVendorEmpanelmentLocation
 );
 router.use('/vendorEmpanelmentLocations', vendorEmpanelmentLocationRoutes);
 
