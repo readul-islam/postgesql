@@ -1,5 +1,5 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class VendorEmpanelmentLocations extends Model {
     /**
@@ -10,9 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.VendorEmpanelmentLocations.belongsTo(models.VendorEmpanelment, {
-        foreignKey: 'vendor_empanelment_id',
-        as:'vendorEmpanelment'
+        foreignKey: "vendor_empanelment_id",
+        as: "vendorEmpanelment",
       });
+      // models.VendorEmpanelmentLocations.belongsTo(models.Contacts, {
+      //   foreignKey: "location_id",
+      //   as: "locationId",
+      // });
     }
   }
   VendorEmpanelmentLocations.init(
@@ -22,31 +26,31 @@ module.exports = (sequelize, DataTypes) => {
       locationVendorManagerId: DataTypes.INTEGER,
       locationId: {
         type: DataTypes.INTEGER,
-        field: 'location_id',
+        field: "location_id",
         references: {
           model: {
-            tableName: 'entity_locations',
+            tableName: "entity_locations",
           },
-          key: 'id',
+          key: "id",
         },
         allowNull: false,
       },
       VendorEmpanelmentId: {
         type: DataTypes.INTEGER,
-        field: 'vendor_empanelment_id',
+        field: "vendor_empanelment_id",
         references: {
           model: {
-            tableName: 'vendor_empanelment',
+            tableName: "vendor_empanelment",
           },
-          key: 'id',
+          key: "id",
         },
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: 'VendorEmpanelmentLocations',
-      tableName: 'vendor_empanelment_locations',
+      modelName: "VendorEmpanelmentLocations",
+      tableName: "vendor_empanelment_locations",
       underscored: true,
     }
   );
