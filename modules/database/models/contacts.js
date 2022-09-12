@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         as: "user",
       });
       models.Contacts.hasMany(models.VendorEmpanelmentLocations, {
-        foreignKey: "contacts_id",
+        foreignKey: "location_vendor_manager_id",
        
       });
     }

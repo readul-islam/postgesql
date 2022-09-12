@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         as: "vendorEmpanelment",
       });
       models.VendorEmpanelmentLocations.belongsTo(models.Contacts, {
-        foreignKey: "contacts_id",
+        foreignKey: "location_vendor_manager_id",
         as: "contacts",
       });
     }
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       locationClientManagerId: DataTypes.INTEGER,
       locationVendorManagerId: {
         type: DataTypes.INTEGER,
-        field: "contacts_id",
+        field: "location_vendor_manager_id",
         references: {
           model: {
             tableName: "contacts",
