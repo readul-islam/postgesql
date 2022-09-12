@@ -13,17 +13,27 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "vendor_empanelment_id",
         as: "vendorEmpanelment",
       });
-      // models.VendorEmpanelmentLocations.belongsTo(models.Contacts, {
-      //   foreignKey: "location_id",
-      //   as: "locationId",
-      // });
+      models.VendorEmpanelmentLocations.belongsTo(models.Contacts, {
+        foreignKey: "contacts_id",
+        as: "contacts",
+      });
     }
   }
   VendorEmpanelmentLocations.init(
     {
       billToAddressId: DataTypes.STRING,
       locationClientManagerId: DataTypes.INTEGER,
-      locationVendorManagerId: DataTypes.INTEGER,
+      locationVendorManagerId: {
+        type: DataTypes.INTEGER,
+        field: "contacts_id",
+        references: {
+          model: {
+            tableName: "contacts",
+          },
+          key: "id",
+        },
+        allowNull: true,
+      },
       locationId: {
         type: DataTypes.INTEGER,
         field: "location_id",

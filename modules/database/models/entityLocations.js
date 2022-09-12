@@ -1,5 +1,5 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class EntityLocations extends Model {
     /**
@@ -10,25 +10,25 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.EntityLocations.belongsTo(models.Entity, {
-        foreignKey: 'entity_id',
+        foreignKey: "entity_id",
       });
 
       models.EntityLocations.belongsTo(models.Contacts, {
-        foreignKey: 'contacts_id',
-        as: 'contacts',
+        foreignKey: "contacts_id",
+        as: "contacts",
       });
       models.EntityLocations.belongsTo(models.State, {
-        foreignKey: 'state_id',
-        as: 'state',
+        foreignKey: "state_id",
+        as: "state",
       });
       models.EntityLocations.belongsTo(models.City, {
-        foreignKey: 'city_id',
-        as: 'city',
+        foreignKey: "city_id",
+        as: "city",
       });
 
       models.EntityLocations.hasMany(models.VendorEmpanelmentLocations, {
-        foreignKey: 'location_id',
-        as: 'empanedledVendor',
+        foreignKey: "location_id",
+        as: "empanedledVendor",
       });
     }
   }
@@ -37,29 +37,29 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       isHQ: {
         type: DataTypes.BOOLEAN,
-        field: 'is_hq',
+        field: "is_hq",
       },
       addressLine1: DataTypes.STRING,
       addressLine2: DataTypes.STRING,
       stateId: {
         type: DataTypes.INTEGER,
-        field: 'state_id',
+        field: "state_id",
         references: {
           model: {
-            tableName: 'state',
+            tableName: "state",
           },
-          key: 'id',
+          key: "id",
         },
         allowNull: false,
       },
       cityId: {
         type: DataTypes.INTEGER,
-        field: 'city_id',
+        field: "city_id",
         references: {
           model: {
-            tableName: 'city',
+            tableName: "city",
           },
-          key: 'id',
+          key: "id",
         },
         allowNull: false,
       },
@@ -67,37 +67,12 @@ module.exports = (sequelize, DataTypes) => {
 
       pincode: DataTypes.STRING,
       telephone: DataTypes.STRING,
-      legalStatus: DataTypes.STRING,
-      tinNum: DataTypes.STRING,
-      gstNum: DataTypes.STRING,
-      designationContact: DataTypes.STRING,
-      primaryContactId: {
-        type: DataTypes.INTEGER,
-        field: 'contacts_id',
-        references: {
-          model: {
-            tableName: 'contacts',
-          },
-          key: 'id',
-        },
-        allowNull: false,
-      },
-      entityId: {
-        type: DataTypes.INTEGER,
-        field: 'entity_id',
-        references: {
-          model: {
-            tableName: 'entity',
-          },
-          key: 'id',
-        },
-        allowNull: false,
-      },
+      gstNum: DataTypes.STRING
     },
     {
       sequelize,
-      modelName: 'EntityLocations',
-      tableName: 'entity_locations',
+      modelName: "EntityLocations",
+      tableName: "entity_locations",
       underscored: true,
     }
   );

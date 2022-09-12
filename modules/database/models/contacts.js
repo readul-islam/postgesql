@@ -13,9 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "users_id",
         as: "user",
       });
-      // models.Contacts.hasMany(models.VendorEmpanelmentLocations, {
-      //   foreignKey: "location_id",
-      // });
+      models.Contacts.hasMany(models.VendorEmpanelmentLocations, {
+        foreignKey: "contacts_id",
+       
+      });
     }
   }
   Contacts.init(

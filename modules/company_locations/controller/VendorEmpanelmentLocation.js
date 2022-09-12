@@ -8,8 +8,9 @@ class VendorEmpanelmentLocation {
   async getVendorEmpanelmentLocation(req, res) {
     try {
       const getvendorEmpanement_location = await getVendorEmpanelmentLocations(
-        req.query
+             req.query
       );
+   
       return res.send(getvendorEmpanement_location);
     } catch (err) {
       return res.status(500).json({ type: err.name, message: err.message });
@@ -26,6 +27,7 @@ class VendorEmpanelmentLocation {
       return res.status(500).json({ type: err.name, message: err.message });
     }
   }
+
 
   async updateVendorEmpanelmentLocation(req, res) {
     try {

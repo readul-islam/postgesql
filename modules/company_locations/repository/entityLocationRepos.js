@@ -44,7 +44,6 @@ exports.getEntityLocationById = (requestBody) => {
 };
 
 exports.updateEntityLocation = ({ id, ...updateInfo }) => {
-  
   return EntityLocations.update(updateInfo, {
     where: {
       id: id,
