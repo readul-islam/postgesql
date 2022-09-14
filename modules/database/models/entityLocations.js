@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "entity_id",
       });
 
-      models.EntityLocations.belongsTo(models.Contacts, {
-        foreignKey: "contacts_id",
-        as: "contacts",
-      });
+    //   models.EntityLocations.belongsTo(models.Contacts, {
+    //     foreignKey: "contacts_id",
+    //     as: "contacts",
+    //   });
       models.EntityLocations.belongsTo(models.State, {
         foreignKey: "state_id",
         as: "state",
